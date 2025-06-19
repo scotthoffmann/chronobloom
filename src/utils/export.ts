@@ -1,7 +1,9 @@
-import dayjs from 'dayjs'
+function formatDate() {
+  return new Date().toISOString().slice(0, 10)
+}
 
 export function generateMarkdown(sessions: any[]) {
-  const date = dayjs().format('YYYY-MM-DD')
+  const date = formatDate()
   const lines = [`## ${date}`]
   sessions.forEach((s) => {
     const status = s.status === 'complete' ? '[x]' : '[ ]'
@@ -13,7 +15,7 @@ export function generateMarkdown(sessions: any[]) {
 
 export function generateJSON(sessions: any[]) {
   return JSON.stringify({
-    date: dayjs().format('YYYY-MM-DD'),
-    sessions
+    date: formatDate(),
+    sessions,
   }, null, 2)
 }
