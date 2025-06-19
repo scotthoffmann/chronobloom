@@ -28,6 +28,7 @@ export function useTimer(initialMinutes = 25, breakMinutes = 5) {
     timerRef.current = setInterval(() => {
       setTimeLeft((t) => {
         if (t === 0) {
+          // Log session completion
           addSession({
             type: onBreak ? 'break' : 'focus',
             length: onBreak ? breakMinutes : initialMinutes,
